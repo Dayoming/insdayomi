@@ -1,0 +1,17 @@
+{% extends "insda/base.html" %}
+{% block content %}
+    <table>
+        <tr>
+            <td>
+                <img src="{{ article.photo.url }}" width="500" class="img-thumbnail"/>
+            </td>
+            <td>{{ article.name }}</td>
+            <td>{{ article.contents }}</td>
+            <td>{{ article.cdate|date:"Y-m-d" }}</td>
+            <td>
+                <a href="/insda/update/{{ article.pk }}" class="btn btn-warning">수정</a>
+                <a href="/insda/" class="btn btn-primary">뒤로가기</a>
+            </td>
+        </tr>
+    </table>
+{% endblock content %}

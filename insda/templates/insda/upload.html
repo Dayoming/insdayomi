@@ -1,0 +1,10 @@
+{% extends "insda/base.html" %}
+{% block content %}
+<form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table">
+        {{ form.as_table }}
+    </table>
+    <button type="submit" class="btn btn-primary">저장</button>
+</form>
+{% endblock content %}

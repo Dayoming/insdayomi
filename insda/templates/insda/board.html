@@ -1,0 +1,52 @@
+{% extends "insda/base.html" %}
+{% block content %}
+<a href="/insda/upload" class="btn btn-primary">Upload</a>
+{% for article in items %}
+        <a href="/insda/detail/{{ article.pk }}">
+            <img src="{{ article.photo.url }}" width="500" class="img-responsive" style="margin:0 auto;"/>
+        </a>
+    {{ article.cdate|date:"Y-m-d" }}
+    <a href="/insda/delete/{{ article.pk }}" class="btn btn-danger">삭제</a>
+    <a href="/insda/update/{{ article.pk }}" class="btn btn-secondary">수정</a>
+    {% endfor %}
+
+<!--pagination-->
+<nav aria-label="...">
+  <ul class="pagination" style="justify-content: center; padding-top:10px">
+      {% if items.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="insda?page={{ items.previous_page_number }}">Previous</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+            <span class="page-link">Previous</span>
+        </li>
+      {% endif %}
+
+      {% for page in items.paginator.page_range %}
+        {% if items.number == page %}
+            <li class="page-item active">
+                <span class="page-link">{{ page }}
+                    <span class="sr-only">(current)</span>
+                </span>
+            </li>
+        {% else %}
+            <li class="page-item">
+                <a class="page-link" href="insda?page={{ page }}">{{ page }}</a>
+            </li>
+        {% endif %}
+      {% endfor %}
+
+      {% if items.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="insda?page={{ items.next_page_number }}">Next</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+            <span class="page-link">Next</span>
+        </li>
+      {% endif %}
+  </ul>
+</nav>
+<!--pagination-->
+{% endblock content %}
