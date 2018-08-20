@@ -82,7 +82,7 @@
               <div class="card">
                   <img src="{{ article.photo.url }}" alt="Card image cap" width="500" class="img-responsive">
                   <p class="card-text">{{ article.cdate|date:"Y-m-d" }}</p>
-                    <div class="row">
+                    <div class="row" style="margin-left: 0px">
                         <a href="/insda/delete/{{ article.pk }}" class="btn btn-secondary btn-sm" style="margin-right: 6px">삭제</a>
                         <a href="/insda/update/{{ article.pk }}" class="btn btn-secondary btn-sm" style="margin-right: 6px">수정</a>
                         <a href="/insda/detail/{{ article.pk }}" class="btn btn-secondary btn-sm" style="margin-right: 6px">detail</a>
