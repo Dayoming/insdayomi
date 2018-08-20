@@ -86,6 +86,8 @@
                         <a href="/insda/delete/{{ article.pk }}" class="btn btn-secondary btn-sm" style="margin-right: 6px">삭제</a>
                         <a href="/insda/update/{{ article.pk }}" class="btn btn-secondary btn-sm" style="margin-right: 6px">수정</a>
                         <a href="/insda/detail/{{ article.pk }}" class="btn btn-secondary btn-sm" style="margin-right: 6px">detail</a>
+                        <button type="button" class="btn btn-danger btn-sm like" data-pk="{{ article.pk }}" style="margin-right: 6px">
+                            ♥ <span class="badge badge-light">{{ article.like }}</span></button>
                     </div>
                   </div>
               {% endfor %}
@@ -133,4 +135,28 @@
   </ul>
 </nav>
 <!--pagination-->
+
+<script>
+    $(document).ready(
+        $('.like').click(function() {
+            var pk = $(this).attr('data-pk');
+
+            $.ajax({
+                // POST 요청엔 항상 csrf_token이 필요
+                type: "POST",
+                url: "{% url 'like' %}",
+                data: {'pk': pk, 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                dataType: "json",
+                success: function(response) {
+                    var pk = response.pk
+                    var like_count = response.like_count
+                    $('.like[data-pk=' + pk + '] > span').text(like_count);
+                },
+                    error: function(request, status, error) {
+                        console.log(error)
+                    }
+                })
+            })
+        );
+</script>
 {% endblock content %}
