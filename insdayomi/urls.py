@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^insda/', include('insda.urls')),
     url(r'', include('insda.urls')),
+    url(r'^crawler/', include('crawler.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
