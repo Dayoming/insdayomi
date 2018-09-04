@@ -1,4 +1,24 @@
 {% extends 'crawler/base.html' %}
 {% block content %}
-<h1>This is Crawler</h1>
+
+<main role="main">
+    <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Crawler</h1>
+            <div class="dropdown">
+              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown button
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">한자</a>
+                <a class="dropdown-item" href="#">영어</a>
+                <a class="dropdown-item" href="#">일본어</a>
+              </div>
+            </div>
+            <p class="lead text-muted">page : </p><input type="text" class="form-control">
+            <button class="btn btn-primary btn-lg" style="margin-top: 10px">Crawling</button>
+        </div>
+      </section>
+</main>
+
 {% endblock content %}
